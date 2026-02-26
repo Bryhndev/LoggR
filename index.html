@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoggR</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── SKYER ── */
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cloud {
+      position: absolute;
+      opacity: 0.15;
+      animation: flyAcross linear infinite;
+    }
+
+    .cloud svg {
+      fill: white;
+    }
+
+    @keyframes flyAcross {
+      0%   { transform: translateX(-200px); }
+      100% { transform: translateX(calc(100vw + 200px)); }
+    }
+
+    /* ── INNHOLD ── */
+    .innhold {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .logo {
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: #fff;
+      margin-bottom: 0.2em;
+    }
+
+    .logo span {
+      color: #aaa;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #aaa;
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+    }
+
+    .beskrivelse {
+      font-size: 1rem;
+      color: #666;
+      max-width: 420px;
+      line-height: 1.8;
+      margin: 0 auto 3rem auto;
+    }
+
+    .knapp {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+
+    .knapp:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .funksjoner {
+      margin-top: 4rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .funk {
+      border: 1px solid #222;
+      padding: 20px 28px;
+      text-align: left;
+      min-width: 180px;
+      max-width: 200px;
+    }
+
+    .funk-tittel {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .funk-tekst {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      font-size: 0.75rem;
+      color: #333;
+      letter-spacing: 0.1em;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SKYER -->
+  <div class="sky" id="sky"></div>
+
+  <!-- INNHOLD -->
+  <div class="innhold">
+    <div class="logo">LoggR<span>.</span></div>
+    <div class="tagline">Loggfør øyeblikket. Enkelt.</div>
+    <div class="beskrivelse">
+      En minimal loggføringsapp for Windows. Skriv, trykk Enter — og alt er lagret med tidsstempel. Ingen distraksjoner, bare loggføring.
+    </div>
+    <a class="knapp" href="#">Last ned gratis</a>
+
+    <div class="funksjoner">
+      <div class="funk">
+        <div class="funk-tittel">Tidsstempling</div>
+        <div class="funk-tekst">Hvert innlegg loggføres automatisk med klokkeslett.</div>
+      </div>
+      <div class="funk">
+        <div class="funk-tittel">Arkiv</div>
+        <div class="funk-tekst">Bla gjennom alle tidligere logger sortert på dato.</div>
+      </div>
+      <div class="funk">
+        <div class="funk-tittel">Snarveier</div>
+        <div class="funk-tekst">Ctrl+K for kopiering. Ctrl+Q for avslutning.</div>
+      </div>
+      <div class="funk">
+        <div class="funk-tittel">Lettvekt</div>
+        <div class="funk-tekst">Ingen installasjon. Bare kjør .exe og loggfør.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">///== | - LoggR - | ==\\\</div>
+
+  <!-- SKY-GENERATOR -->
+  <script>
+    const sky = document.getElementById('sky');
+
+    const cloudShapes = [
+      // Liten sky 1
+      `<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="60" cy="40" rx="50" ry="18"/>
+        <ellipse cx="45" cy="32" rx="25" ry="18"/>
+        <ellipse cx="72" cy="28" rx="22" ry="16"/>
+      </svg>`,
+      // Liten sky 2
+      `<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="50" cy="35" rx="40" ry="14"/>
+        <ellipse cx="38" cy="28" rx="20" ry="14"/>
+        <ellipse cx="62" cy="25" rx="18" ry="13"/>
+        <ellipse cx="50" cy="22" rx="14" ry="11"/>
+      </svg>`,
+      // Liten sky 3
+      `<svg viewBox="0 0 80 40" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="40" cy="28" rx="32" ry="11"/>
+        <ellipse cx="30" cy="22" rx="16" ry="11"/>
+        <ellipse cx="50" cy="20" rx="15" ry="10"/>
+      </svg>`,
+    ];
+
+    function lagSky() {
+      const el = document.createElement('div');
+      el.classList.add('cloud');
+
+      const storrelse = Math.random() * 60 + 40;
+      const toppPos   = Math.random() * 85;
+      const varighet  = Math.random() * 60 + 40;
+      const forsinkelse = Math.random() * -80;
+      const opacity   = Math.random() * 0.12 + 0.05;
+      const form      = cloudShapes[Math.floor(Math.random() * cloudShapes.length)];
+
+      el.style.width      = `${storrelse}px`;
+      el.style.top        = `${toppPos}%`;
+      el.style.opacity    = opacity;
+      el.style.animationDuration  = `${varighet}s`;
+      el.style.animationDelay     = `${forsinkelse}s`;
+      el.innerHTML = form;
+
+      sky.appendChild(el);
+    }
+
+    // Lag 25 skyer
+    for (let i = 0; i < 25; i++) {
+      lagSky();
+    }
+  </script>
+
+</body>
+</html>
