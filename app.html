@@ -23,32 +23,33 @@
 
     /* ── HEADER ── */
     .header {
-      padding: 16px;
-      border-bottom: 1px solid #1a1a1a;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    .header-tittel {
-  font-size: clamp(0.5rem, 3vw, 0.75rem);
-  letter-spacing: 0.08em;
-  color: #555;
-  white-space: nowrap;
+  padding: 12px 16px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-    .header-logg {
-      font-size: 0.75rem;
-      color: #333;
-      max-width: 60%;
-      text-align: right;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+.header-tittel {
+  font-size: clamp(0.4rem, 2.8vw, 0.75rem);
+  letter-spacing: 0.05em;
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.header-logg {
+  font-size: clamp(0.4rem, 2.8vw, 0.75rem);
+  color: #333;
+  max-width: 45%;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+}
 
     /* ── LOGG-VISNING ── */
     .logg-visning {
