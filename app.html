@@ -32,10 +32,13 @@
     }
 
     .header-tittel {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: #555;
-    }
+  font-size: clamp(0.5rem, 3vw, 0.75rem);
+  letter-spacing: 0.08em;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
     .header-logg {
       font-size: 0.75rem;
